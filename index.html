@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaneur Magazine</title>
+</head>
+<body>
+    <button class="info-button">
+        <span class="info-button-span"></span>
+    </button>
+    <div class="info-blur"></div>
+    <div class="info-popup">
+        <h2 class="info-popup__title">Привет, это мы!</h2>
+        <p class="info-popup__text">Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас</p>
+    </div>
+    <style type="text/css">
+        .info-button {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            background-color: #fff705;
+            z-index: 99;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .info-button-span {
+            display: block;
+            margin: auto;
+            right: 0;
+            height: 4px;
+            width: 50%;
+            transform: rotate(90deg);           
+            background-color: #303030;
+            transition-duration: 0.3s, 0.3s;
+            transition-delay: 0.3s, 0s;
+            transition-property: bottom, transform;
+        }
+
+        .info-button-span::before {
+            position: absolute;
+            display: block;
+            margin: auto;
+            width: 100%;
+            height: 4px;
+            background-color: #303030;
+            content: '';
+            transition-duration: 0.3s, 0.3s;
+            transition-delay: 0.3s, 0s;
+            transition-property: bottom, transform;
+        }
+
+        .info-button-span_type_close {
+            transform: rotate(45deg);
+            transition-delay: 0s, 0.1s;
+        }
+
+        .info-button-span_type_close::before {
+            display: block;
+            transform: rotate(90deg);
+            transition-delay: 0s, 0.1s;
+        }
+        
+        .info-button:hover {
+            opacity: 0.7;
+            transition: 0.2s ease-in;
+        }
+
+        .info-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            visibility: hidden;
+            z-index: 2;
+        }
+
+        .info-blue_type_opened {
+            visibility: visible;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .info-popup {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 80%;
+            background-color: #202020;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: 98;
+        }
+
+        .info-popup_type_opened {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .info-popup__title {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .info-popup__text {
+            margin: 20px 0 0 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            max-width: 800px;
+        }
+    </style>
+    <script type="text/javascript">
+        const infoButton = document.querySelector('.info-button');
+        const infoPopup = document.querySelector('.info-popup');
+        const infoBlur = document.querySelector('.info-blur');
+        const infoButtonSpan = document.querySelector('.info-button-span');
+
+        function infoPopupToggle() {
+            infoPopup.classList.toggle('info-popup_type_opened');
+            infoBlur.classList.toggle('info-blue_type_opened');
+            infoButtonSpan.classList.toggle('info-button-span_type_close');
+        }
+
+        infoButton.addEventListener('click', infoPopupToggle);
+    </script>
+</body>
+</html>
