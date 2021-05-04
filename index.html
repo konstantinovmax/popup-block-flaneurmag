@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flaneur Magazine</title>
+    <title>Flaneur popup</title>
 </head>
 <body>
     <button class="info-button">
@@ -12,12 +12,30 @@
     </button>
     <div class="info-blur"></div>
     <div class="info-popup">
-        <h2 class="info-popup__title">Привет, это мы!</h2>
-        <p class="info-popup__text">Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас Текст о нас</p>
+        <div class="info-popup__container">
+            <div class="info-popup__content-container">
+                <div class="info-popup__text-container">
+                    <p class="info-popup__text">Наш проект сложился из любви к фотоискусству и архитектуре городов России.</p>
+                    <p class="info-popup__text">Мы надеемся, что популяризация существующего наследия поможет как туристам, так и местным жителям проявить больше внимания к окружающей их среде.</p>
+                    <p class="info-popup__text">Через призмы наших камер мы стараемся запечатлеть тот облик городов, который мы наблюдаем сейчас и раскрыть потенциал и уникальность зданий, деталей и среды, их наполняющих.</p>
+                </div>
+                <div class="info-popup__contacts">
+                    <h2 class="info-popup__contacts-title">Контакты</h2>
+                    <div class="info-popup__links-container">
+                        <a class="info-popup__link"><img class="info-popup__link-image" src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/gPKQ/6NS2eNHHq/inst.png" alt="Instagram logo"></a>
+                        <a class="info-popup__link"><img class="info-popup__link-image" src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/gPKQ/6NS2eNHHq/fb.png" alt="Facebook logo"></a>
+                        <a class="info-popup__link"><img class="info-popup__link-image" src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/gPKQ/6NS2eNHHq/mail.png" alt="Mailbox logo"></a>
+                    </div>
+                </div>
+            </div>
+            <img class="info-popup__logo" src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/gPKQ/6NS2eNHHq/%D0%A4%D0%9B%D0%90%D0%9D%D0%81%D0%A0%20%D0%BB%D0%BE%D0%B3%D0%BE.png" alt="Логотип проекта 'Фланёр'">
+        </div>
     </div>
     <style type="text/css">
         .info-button {
             position: fixed;
+            top: 30px;
+            left: 30px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -30,7 +48,7 @@
             margin: 0;
             padding: 0;
         }
-
+    
         .info-button-span {
             display: block;
             margin: auto;
@@ -43,7 +61,7 @@
             transition-delay: 0.3s, 0s;
             transition-property: bottom, transform;
         }
-
+    
         .info-button-span::before {
             position: absolute;
             display: block;
@@ -56,12 +74,12 @@
             transition-delay: 0.3s, 0s;
             transition-property: bottom, transform;
         }
-
+    
         .info-button-span_type_close {
             transform: rotate(45deg);
             transition-delay: 0s, 0.1s;
         }
-
+    
         .info-button-span_type_close::before {
             display: block;
             transform: rotate(90deg);
@@ -72,33 +90,32 @@
             opacity: 0.7;
             transition: 0.2s ease-in;
         }
-
+    
         .info-blur {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, .3);
+            background-color: rgba(0, 0, 0, .5);
             visibility: hidden;
             z-index: 2;
         }
-
+    
         .info-blue_type_opened {
             visibility: visible;
             transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
-
+    
         .info-popup {
             position: fixed;
             top: 0;
             right: 0;
             width: 100%;
-            height: 80%;
-            background-color: #202020;
+            height: 60%;
+            background-color: #000;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             color: #fff;
             transform: translateY(-100%);
@@ -106,25 +123,96 @@
             transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
             z-index: 98;
         }
-
+    
         .info-popup_type_opened {
             transform: translateY(0);
             opacity: 1;
         }
-
-        .info-popup__title {
-            margin: 0;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 700;
-            font-size: 20px;
+    
+        .info-popup__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 250px 0 250px;
         }
-
+        
+        .info-popup__content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .info-popup__text-container {
+            display: flex;
+            flex-direction: column;
+        }
+    
         .info-popup__text {
-            margin: 20px 0 0 0;
+            max-width: 400px;
+            margin: 0 0 15px 0;
             font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            max-width: 800px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+        
+        .info-popup__text:last-of-type {
+            margin: 0;
+        }
+        
+        .info-popup__contacts {
+            padding: 10px 10px 10px 0;
+            margin: 30px 0 0 0;
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 250px;
+        }
+        
+        .info-popup__contacts-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 700px;
+        }
+        
+        .info-popup__links-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-popup__link {
+            margin: 0;
+            text-decoration: none;
+            margin: 0 10px 0 0;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    
+        .info-popup__link:hover {
+            opacity: 0.7;
+            transition: 0.2s ease-in;
+        }
+        
+        .info-popup__link:last-of-type {
+            margin: 0;
+        }
+        
+        .info-popup__link-image {
+            margin: 0;
+            width: inherit;
+            height: inherit;
+            object-fit: contain;
+        }
+        
+        .info-popup__logo {
+            margin: 0;
+            width: 300px;
+            height: 50px;
+            object-fit: contain;
         }
     </style>
     <script type="text/javascript">
@@ -132,13 +220,13 @@
         const infoPopup = document.querySelector('.info-popup');
         const infoBlur = document.querySelector('.info-blur');
         const infoButtonSpan = document.querySelector('.info-button-span');
-
+    
         function infoPopupToggle() {
             infoPopup.classList.toggle('info-popup_type_opened');
             infoBlur.classList.toggle('info-blue_type_opened');
             infoButtonSpan.classList.toggle('info-button-span_type_close');
         }
-
+    
         infoButton.addEventListener('click', infoPopupToggle);
     </script>
 </body>
