@@ -124,6 +124,18 @@
             z-index: 98;
         }
     
+        @media screen and (max-width: 1000px) {
+            .info-popup {
+                height: 80%;
+            }
+        }
+        
+        @media screen and (max-width: 400px) {
+            .info-popup {
+                height: 90%;
+            }
+        }
+    
         .info-popup_type_opened {
             transform: translateY(0);
             opacity: 1;
@@ -135,6 +147,33 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 250px 0 250px;
+        }
+    
+        @media screen and (max-width: 1300px) {
+            .info-popup__container {
+                padding: 0 150px 0 150px;
+            }
+        }
+    
+        @media screen and (max-width: 1100px) {
+            .info-popup__container {
+                padding: 0 100px 0 100px;
+            }
+        }
+    
+        @media screen and (max-width: 1000px) {
+            .info-popup__container {
+                padding: 200px 50px 200px 50px;
+            }
+        }
+    
+        @media screen and (max-width: 590px) {
+            .info-popup__container {
+                flex-direction: column-reverse;
+                align-items: center;
+                justify-content: center;
+                padding: 300px 20px 300px 20px;
+            }
         }
         
         .info-popup__content-container {
@@ -156,6 +195,24 @@
             font-weight: 400;
             font-size: 14px;
         }
+    
+        @media screen and (max-width: 1000px) {
+            .info-popup__text {
+                max-width: 260px;
+            }
+        }
+    
+        @media screen and (max-width: 590px) {
+            .info-popup__text {
+                padding: 0 10px 0 10px;
+            }
+        }
+        
+        @media screen and (max-width: 360px) {
+            .info-popup__text {
+                font-size: 12px;
+            }
+        }
         
         .info-popup__text:last-of-type {
             margin: 0;
@@ -169,13 +226,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 250px;
+            width: 260px;
         }
         
         .info-popup__contacts-title {
             font-family: 'Montserrat', Arial, sans-serif;
             font-size: 18px;
             font-weight: 700px;
+        }
+    
+        @media screen and (max-width: 1000px) {
+            .info-popup__contacts-title {
+                font-size: 16px;
+            }
         }
         
         .info-popup__links-container {
@@ -214,6 +277,31 @@
             height: 50px;
             object-fit: contain;
         }
+    
+        @media screen and (max-width: 800px) {
+            .info-popup__logo {
+                width: 200px;
+                height: 40px;
+            }
+        }
+    
+        @media screen and (max-width: 590px) {
+            .info-popup__logo {
+                width: 150px;
+                height: 35px;
+                position: absolute;
+                top: 30px;
+                right: 30px;
+            }
+        }
+    
+        @media screen and (max-width: 460px) {
+            .info-popup__logo {
+                align-self: center;
+                justify-self: center;
+            }
+        }
+    
     </style>
     <script type="text/javascript">
         const infoButton = document.querySelector('.info-button');
