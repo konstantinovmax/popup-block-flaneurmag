@@ -308,12 +308,42 @@
         const infoPopup = document.querySelector('.info-popup');
         const infoBlur = document.querySelector('.info-blur');
         const infoButtonSpan = document.querySelector('.info-button-span');
-    
-        function infoPopupToggle() {
-            infoPopup.classList.toggle('info-popup_type_opened');
-            infoBlur.classList.toggle('info-blue_type_opened');
-            infoButtonSpan.classList.toggle('info-button-span_type_close');
+
+        function infoPopupOpen() {
+            infoPopup.classList.add('info-popup_type_opened');
+            infoBlur.classList.add('info-blue_type_opened');
+            infoButtonSpan.classList.add('info-button-span_type_close');
+            document.addEventListener('keydown', closeEscapeButton);
+            document.addEventListener('mousedown', closeClickOverlay);
         }
+
+        function infoPopupClose() {
+            infoPopup.classList.remove('info-popup_type_opened');
+            infoBlur.classList.remove('info-blue_type_opened');
+            infoButtonSpan.classList.remove('info-button-span_type_close');
+            document.removeEventListener('keydown', closeEscapeButton);
+            document.removeEventListener('mousedown', closeClickOverlay);
+        }
+
+        function closeEscapeButton(e) {
+            if (e.key === 'Escape') {
+                infoPopupClose();
+            }
+        }
+
+        function closeClickOverlay(e) {
+            if (e.target.classList.contains('info-blur')) {
+                infoPopupClose();
+            }
+        }
+
+        function infoPopupToggle() {
+            if (infoPopup.classList.contains('info-popup_type_opened')) {
+                infoPopupClose();
+            } else {
+                infoPopupOpen();
+            }
+        }    
     
         infoButton.addEventListener('click', infoPopupToggle);
     </script>
